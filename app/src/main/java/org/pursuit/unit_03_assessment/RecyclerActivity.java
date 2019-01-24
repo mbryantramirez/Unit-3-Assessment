@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 
 import org.pursuit.unit_03_assessment.controller.PlanetAdapter;
 import org.pursuit.unit_03_assessment.model.Planet;
@@ -19,6 +20,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 
 public class RecyclerActivity extends AppCompatActivity {
+    private static final String TAG = "Unit 3 Assessment";
     private Retrofit retrofit;
     private RecyclerView recyclerView;
 
@@ -41,7 +43,7 @@ public class RecyclerActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<PlanetList> call, Throwable t) {
-
+                Log.d(TAG, "onFailure: Something went wrong" + t.getMessage());
             }
         });
     }
