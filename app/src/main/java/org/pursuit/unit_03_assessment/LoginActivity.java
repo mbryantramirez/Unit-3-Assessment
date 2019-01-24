@@ -50,13 +50,6 @@ public class LoginActivity extends AppCompatActivity {
             usernameCheckbox.setChecked(true);
         }
 
-
-        /*
-        * TODO: add logic to set values to views:
-        * TODO: 1. if there is a username value AND checkbox value in shared preferences - set the username EditText's value to the username value from shared preferences, and set the checkbox's value to the checkbox value from shared preferences
-
-         */
-
         Button mEmailSignInButton = (Button) findViewById(R.id.email_sign_in_button);
         mEmailSignInButton.setOnClickListener(new OnClickListener() {
             @Override
