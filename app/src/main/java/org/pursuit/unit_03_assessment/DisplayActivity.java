@@ -25,6 +25,9 @@ public class DisplayActivity extends AppCompatActivity {
 
         planetImageView = findViewById(R.id.planet_imageview);
         nameTv = findViewById(R.id.planet_name_tv);
+        /**
+         * can't pass in a number into a textview you should convert this to a string
+         */
         numberTv = findViewById(R.id.planet_number_tv);
 
         nameTv.setText(name);

@@ -35,6 +35,10 @@ public class RecyclerActivity extends AppCompatActivity {
         planetListCall.enqueue(new Callback<PlanetList>() {
             @Override
             public void onResponse(Call<PlanetList> call, Response<PlanetList> response) {
+                /**
+                 * if your trying to get something from your response body you should wrap it in a null check otherwise your app will crash
+                 *  check if response.body is null before you do anything with the response data
+                 */
                 List<Planet> myPlanetsList = response.body().getMyPlanetList();
                 recyclerView = findViewById(R.id.recycler_view);
                 recyclerView.setAdapter(new PlanetAdapter(myPlanetsList));

@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -66,7 +67,8 @@ public class LoginActivity extends AppCompatActivity {
 
         String email = emailView.getText().toString();
         String password = passwordView.getText().toString();
-
+        Log.d("TAG", "attemptLogin: " + email);
+        Log.d("TAG", "attemptLogin: " + password);
         boolean cancel = false;
         View focusView = null;
 
@@ -84,10 +86,27 @@ public class LoginActivity extends AppCompatActivity {
             focusView = emailView;
             cancel = true;
         } else {
-            if (email.equals(String.valueOf(R.string.dummy_username)) && password.equals(String.valueOf(R.string.dummy_password))) {
+            String xmlUserName = getString(R.string.dummy_username);
+            String xmlPassword = getString(R.string.dummy_password);
+            Log.d("TAG", "attemptLogin: " + "PASSWORD IS VALID");
+            Log.d("TAG", "attemptLogin: " +xmlUserName);
+            Log.d("TAG", "attemptLogin: " +xmlPassword);
+            /**
+             * String.valueOf() converts and integer to a string
+             *
+             * using String.valueOf(R.string.dummyusername/password) will convert this into the integer value of the Resources id rather than get the text in the string.xml file
+             *
+             * use getString() instead
+             *
+             * Use logcat/debugger to catch this kind of error
+             */
+            if (email.equals(xmlUserName) && password.equals(xmlPassword)) {
                 cancel = false;
                 Intent intent = new Intent(getApplicationContext(), RecyclerActivity.class);
                 startActivity(intent);
+                /**
+                 * This code will never run, your are starting new activity so youll move on from this activity
+                 */
                 if (usernameCheckbox.isChecked()) {
                     sharedPref.edit()
                             .putString("dummy_username", email)

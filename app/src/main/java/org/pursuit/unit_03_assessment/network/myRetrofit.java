@@ -13,6 +13,9 @@ public class myRetrofit {
             return retrofitInstance;
         }
         retrofitInstance = new Retrofit.Builder()
+            /**
+             * You should end your base url with a / instead
+             */
                 .baseUrl("https://raw.githubusercontent.com")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
